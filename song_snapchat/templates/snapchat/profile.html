@@ -1,4 +1,5 @@
 {% extends 'main/base.html' %}
+{% load static %}
 
 {% block content %}
 
@@ -15,5 +16,19 @@
   {% else %}
       <h2 class="text-white-50 mx-auto mt-2 mb-5">No songs are available</h2>
   {% endif %}
+
+  <div class="test-song-container">
+    <script>
+      function play_test(){
+        var audio = document.getElementById("test-sound-audio");
+        audio.play();
+      }
+   </script>
+    <audio id="test-sound-audio" src="{% static "snapchat/audio/guitar.mp3" %}" ></audio>
+
+    <button class="btn song-tile test-song-button btn-secondary js-scroll-trigger" onclick="play_test()">
+      <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>Test sound
+    </button>
+  </div>
 
 {% endblock %}

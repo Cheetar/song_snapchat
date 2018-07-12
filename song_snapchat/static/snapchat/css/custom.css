@@ -12,3 +12,8 @@
 .gramophone-container{
   padding: 20px;
 }
+
+.test-song-button{
+  position: absolute; right: 50px; bottom: 50px;
+  
+}
