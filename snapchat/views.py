@@ -34,10 +34,7 @@ def profile(request, profile_token=None):
 def song(request, song_token):
     song = get_object_or_404(Song, token=song_token)
 
-    if song.visited:
-        return HttpResponse("Song already visited!")
-
-    #song.visited = True
-    # song.save()
+    song.visited = True
+    song.save()
     context = {'song': song, 'profile_token': song.profile.token}
     return render(request, 'snapchat/song.html', context)
