@@ -1,0 +1,9 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+  <audio src="{{ song.upload.url }}" autoplay>
+    <p>If you are reading this, it is because your browser does not support the audio element.</p>
+  </audio>
+
+    <a style="position: relative; top: 200px;" href="{% url 'profile' profile_token %}" class="btn btn-secondary js-scroll-trigger">Back</a>
+{% endblock %}
