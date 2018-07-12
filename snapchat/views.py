@@ -1,3 +1,5 @@
+import math
+
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 
@@ -15,7 +17,17 @@ def profile(request, profile_token=None):
     profile = get_object_or_404(Profile, token=profile_token)
     songs = Song.objects.filter(profile=profile)
 
-    context = {'song_list': songs}
+    n = len(songs)
+    if n > 10:
+        no_columns = 3
+    elif n > 5:
+        no_columns = 2
+    else:
+        no_columns = 1
+
+    songs_arranged = [songs[i * no_columns:i * no_columns + no_columns] for i in range(math.ceil(n / no_columns))]
+
+    context = {'songs_arranged': songs_arranged, 'exceeding': n % no_columns}
     return render(request, 'snapchat/profile.html', context)
 
 
