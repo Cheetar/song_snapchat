@@ -8,6 +8,12 @@ def generate_token():
     return binascii.hexlify(os.urandom(16)).decode()
 
 
+def restart_songs():
+    for song in Song.objects.all():
+        song.visited = False
+        song.save()
+
+
 class Profile(models.Model):
     id = models.AutoField(primary_key=True)
     token = models.CharField(max_length=32, blank=True)
