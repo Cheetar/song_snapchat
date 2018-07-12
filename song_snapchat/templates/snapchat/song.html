@@ -1,9 +1,18 @@
 {% extends 'main/base.html' %}
+{% load static %}
 
 {% block content %}
   <audio src="{{ song.upload.url }}" autoplay>
     <p>If you are reading this, it is because your browser does not support the audio element.</p>
   </audio>
-    <h2 class="text-white-50 mx-auto mt-2 mb-5">{{song.description|default_if_none:""}}</h2>
-    <a style="position: relative; top: 200px;" href="{% url 'profile' profile_token %}" class="btn btn-secondary js-scroll-trigger">Back</a>
+    <h2 class="text-white-50 mx-auto mt-2 mb-5">
+      {% if not song.description %}
+        <div class="gramophone-container">
+          <img class="gramophone-image" src="{% static "snapchat/img/gramophone.gif" %}" />
+        </div>
+      {% else %}
+        {{song.description}}
+      {% endif %}
+    </h2>
+    <a style="position: relative; fixed; bottom: 0px;" href="{% url 'profile' profile_token %}" class="btn btn-secondary js-scroll-trigger">Back</a>
 {% endblock %}
