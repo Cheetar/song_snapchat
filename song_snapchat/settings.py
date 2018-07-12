@@ -77,7 +77,7 @@ TEMPLATES = [
 ]
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "song_snapchat/static"),
 ]
 
 WSGI_APPLICATION = 'song_snapchat.wsgi.application'
