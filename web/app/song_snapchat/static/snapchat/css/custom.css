@@ -1,0 +1,21 @@
+.song-tile{
+  margin:20px;
+}
+
+.gramophone-image{
+  border-radius: 10px;
+  box-shadow: 10px;
+  width:400px;
+  height:300px;
+}
+
+.gramophone-container{
+  padding: 20px;
+}
+
+.test-song-button{
+  position: absolute; right: 50px; bottom: 50px;
+}
+
+.test-sound-text{
+}
