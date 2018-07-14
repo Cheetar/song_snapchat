@@ -3,6 +3,7 @@ version: '2'
 services:
   db:
     image: postgres
+
   web:
     build: web/
     environment:
@@ -20,3 +21,14 @@ services:
       - "8000:8000"
     depends_on:
       - db
+
+  nginx:
+    image: "nginx:latest"
+    volumes:
+    - static:/static/
+    ports:
+    - 8080:8080
+    environment:
+      PASS_TO: "http://ec2-18-185-125-152.eu-central-1.compute.amazonaws.com"
+    depends_on:
+    - web
