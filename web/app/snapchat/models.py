@@ -37,6 +37,7 @@ class Song(models.Model):
     token = models.CharField(max_length=32, blank=True)
     snap = models.ForeignKey('Snap', on_delete=models.CASCADE)
     visited = models.BooleanField(default=False)
+    listened_on = models.DateTimeField(blank=True, null=True)
     # song will be uploaded to MEDIA_ROOT/songs
     upload = models.FileField(upload_to='songs/')
 

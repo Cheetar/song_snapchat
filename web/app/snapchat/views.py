@@ -1,4 +1,5 @@
 import math
+from datetime import datetime
 
 from django.shortcuts import get_object_or_404, render
 
@@ -34,6 +35,7 @@ def song(request, song_token):
     song = get_object_or_404(Song, token=song_token)
 
     song.visited = True
+    song.listened_on = datetime.now()
     song.save()
     context = {'song': song, 'snap_token': song.snap.token}
     return render(request, 'snapchat/song.html', context)
