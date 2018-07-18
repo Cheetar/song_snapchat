@@ -11,6 +11,7 @@ def generate_token():
 def restart_songs():
     for song in Song.objects.all():
         song.visited = False
+        song.listened_on = None
         song.save()
 
 
@@ -18,6 +19,7 @@ class Snap(models.Model):
     id = models.AutoField(primary_key=True)
     token = models.CharField(max_length=32, blank=True)
     name = models.CharField(max_length=100, blank=True, null=True)
+    created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         if self.name is None:
@@ -36,6 +38,7 @@ class Song(models.Model):
     description = models.CharField(max_length=500, blank=True, null=True)
     token = models.CharField(max_length=32, blank=True)
     snap = models.ForeignKey('Snap', on_delete=models.CASCADE)
+    created_on = models.DateTimeField(auto_now_add=True)
     visited = models.BooleanField(default=False)
     listened_on = models.DateTimeField(blank=True, null=True)
     # song will be uploaded to MEDIA_ROOT/songs
