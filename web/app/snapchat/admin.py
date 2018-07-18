@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Profile, Song
+from .models import Snap, Song
 
-admin.site.register(Profile)
+admin.site.register(Snap)
 admin.site.register(Song)

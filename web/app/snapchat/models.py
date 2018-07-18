@@ -14,7 +14,7 @@ def restart_songs():
         song.save()
 
 
-class Profile(models.Model):
+class Snap(models.Model):
     id = models.AutoField(primary_key=True)
     token = models.CharField(max_length=32, blank=True)
     name = models.CharField(max_length=100, blank=True, null=True)
@@ -27,7 +27,7 @@ class Profile(models.Model):
     def save(self, *args, **kwargs):
         if not self.token:
             self.token = generate_token()
-        return super(Profile, self).save(*args, **kwargs)
+        return super(Snap, self).save(*args, **kwargs)
 
 
 class Song(models.Model):
@@ -35,7 +35,7 @@ class Song(models.Model):
     name = models.CharField(max_length=150)
     description = models.CharField(max_length=500, blank=True, null=True)
     token = models.CharField(max_length=32, blank=True)
-    profile = models.ForeignKey('Profile', on_delete=models.CASCADE)
+    snap = models.ForeignKey('Snap', on_delete=models.CASCADE)
     visited = models.BooleanField(default=False)
     # song will be uploaded to MEDIA_ROOT/songs
     upload = models.FileField(upload_to='songs/')
