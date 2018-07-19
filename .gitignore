@@ -1,5 +1,5 @@
 venv/
 db.sqlite3
-media/songs/
+web/app/media/songs/*
 *.pyc
 .env
