@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  web:
+    build: web/
+    environment:
+      SECRET_KEY: "76c076963326c4787b4babd5452e17b7"
+      DEBUG: "True"
+      STATIC_ROOT: '/code/app/song_snapchat/static/'
+      MEDIA_ROOT: '/code/app/media/'
+      ALLOWED_HOSTS: "*"
+      DATABASES: "{'default':{'ENGINE':'django.db.backends.sqlite3','NAME':'/code/app/db.sqlite3',}}"
+      SITE_NAME_HUMAN: "Snapchat for songs"
+    command: bash -c "python3 /code/app/manage.py migrate && python3 /code/app/manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./web:/code
+    expose:
+      - "8000"
+    ports:
+      - "8000:8000"
+    restart: always

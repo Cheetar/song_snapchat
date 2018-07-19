@@ -1,20 +1,21 @@
 import math
+from datetime import datetime
 
 from django.shortcuts import get_object_or_404, render
 
-from .models import Profile, Song
+from .models import Snap, Song
 
 
 def index(request):
     return render(request, 'main/index.html',)
 
 
-def profile(request, profile_token=None):
-    if profile_token is None:
-        profile_token = request.POST.get("token", "")
+def snap(request, snap_token=None):
+    if snap_token is None:
+        snap_token = request.POST.get("token", "")
 
-    profile = get_object_or_404(Profile, token=profile_token)
-    songs = Song.objects.filter(profile=profile)
+    snap = get_object_or_404(Snap, token=snap_token)
+    songs = Song.objects.filter(snap=snap)
 
     n = len(songs)
     if n > 10:
@@ -27,13 +28,14 @@ def profile(request, profile_token=None):
     songs_arranged = [songs[i * no_columns:i * no_columns + no_columns] for i in range(math.ceil(n / no_columns))]
 
     context = {'songs_arranged': songs_arranged, 'exceeding': n % no_columns}
-    return render(request, 'snapchat/profile.html', context)
+    return render(request, 'snapchat/snap.html', context)
 
 
 def song(request, song_token):
     song = get_object_or_404(Song, token=song_token)
 
     song.visited = True
+    song.listened_on = datetime.now()
     song.save()
-    context = {'song': song, 'profile_token': song.profile.token}
+    context = {'song': song, 'snap_token': song.snap.token}
     return render(request, 'snapchat/song.html', context)
