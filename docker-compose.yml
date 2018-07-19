@@ -4,12 +4,12 @@ services:
   web:
     build: web/
     environment:
-      SECRET_KEY: "76c076963326c4787b4babd5452e17b7"
+      SECRET_KEY: "3558818dc29b7345bce995003f57dd"
       DEBUG: "False"
       STATIC_ROOT: '/code/app/static/'
       MEDIA_ROOT: '/code/app/media/'
       ALLOWED_HOSTS: "*"
-      DATABASES: "{'default':{'ENGINE':'django.db.backends.sqlite3','NAME':'/code/app/db.sqlite3',}}"
+      DATABASES: "{'default': {'ENGINE': 'django.db.backends.postgresql_psycopg2', 'NAME': 'song_snapchat', 'USER': 'snapchat', 'PASSWORD': 'snapchat', 'HOST': 'localhost', 'PORT': '',}}"
       SITE_NAME_HUMAN: "Snapchat for songs"
     command: bash -c "python3 /code/app/manage.py makemigrations && python3 /code/app/manage.py migrate && python3 /code/app/manage.py collectstatic --noinput && cd /code/app/ && gunicorn song_snapchat.wsgi -b 0.0.0.0:8000 --workers 3"
     volumes:
