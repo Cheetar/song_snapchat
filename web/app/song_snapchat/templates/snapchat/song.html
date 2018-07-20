@@ -3,7 +3,7 @@
 
 {% block content %}
       <h2 class="text-white-50 mx-auto mt-2 mb-5">
-        {% if song.visited %}
+        {% if was_song_visited %}
           Song was already played
         {% else %}
             <audio src="{{ song.upload.url }}" autoplay>
