@@ -34,8 +34,10 @@ def snap(request, snap_token=None):
 def song(request, song_token):
     song = get_object_or_404(Song, token=song_token)
 
-    song.visited = True
-    song.listened_on = datetime.now()
-    song.save()
+    if not song.visited:
+        song.visited = True
+        song.listened_on = datetime.now()
+        song.save()
+
     context = {'song': song, 'snap_token': song.snap.token}
     return render(request, 'snapchat/song.html', context)

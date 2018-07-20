@@ -2,13 +2,13 @@
 {% load static %}
 
 {% block content %}
-    <audio src="{{ song.upload.url }}" autoplay>
-      <p>If you are reading this, it is because your browser does not support the audio element.</p>
-    </audio>
       <h2 class="text-white-50 mx-auto mt-2 mb-5">
-        {% if not song.visited %}
+        {% if song.visited %}
           Song was already played
         {% else %}
+            <audio src="{{ song.upload.url }}" autoplay>
+              <p>If you are reading this, it is because your browser does not support the audio element.</p>
+            </audio>
           {% if not song.description %}
             <div class="gramophone-container">
               <img class="gramophone-image" src="{% static "snapchat/img/gramophone.gif" %}" />
