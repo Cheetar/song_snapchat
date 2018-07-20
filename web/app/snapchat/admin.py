@@ -34,7 +34,7 @@ class SongAdmin(admin.ModelAdmin):
 
 
 class SnapAdmin(admin.ModelAdmin):
-    list_display = ('name', 'created_on')
+    list_display = ('name', 'created_on', 'token')
     ordering = ('-created_on',)
     actions = [unlistenSnap]
 
