@@ -1,6 +1,13 @@
 version: '2'
 
 services:
+  db:
+    image: postgres:alpine
+    restart: always
+    environment:
+        POSTGRES_USER: "snapchat"
+        POSTGRES_PASSWORD: "snapchat"
+        POSTGRES_DB: "song_snapchat"
   web:
     build: web/
     environment:
@@ -9,7 +16,7 @@ services:
       STATIC_ROOT: '/code/app/static/'
       MEDIA_ROOT: '/code/app/media/'
       ALLOWED_HOSTS: "*"
-      DATABASES: "{'default': {'ENGINE': 'django.db.backends.postgresql_psycopg2', 'NAME': 'song_snapchat', 'USER': 'snapchat', 'PASSWORD': 'snapchat', 'HOST': 'localhost', 'PORT': '',}}"
+      DATABASES: "{'default': {'ENGINE': 'django.db.backends.postgresql_psycopg2', 'NAME': 'song_snapchat', 'USER': 'snapchat', 'PASSWORD': 'snapchat', 'HOST': 'db', 'PORT': '',}}"
       SITE_NAME_HUMAN: "Snapchat for songs"
     command: bash -c "python3 /code/app/manage.py makemigrations && python3 /code/app/manage.py migrate && python3 /code/app/manage.py collectstatic --noinput && cd /code/app/ && gunicorn song_snapchat.wsgi -b 0.0.0.0:8000 --workers 3"
     volumes:
@@ -18,4 +25,6 @@ services:
       - "8000"
     ports:
       - "8000:8000"
+    depends_on:
+      - db
     restart: always
