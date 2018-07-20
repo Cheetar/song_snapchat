@@ -26,6 +26,13 @@ class Snap(models.Model):
 
 
 class Song(models.Model):
+
+    def get_random_song_path(instance, filename):
+        # song will be uploaded to MEDIA_ROOT/songs/<random-32-hex>.<ext>
+        ext = filename.split(".")[-1]
+        token = generate_token()
+        return 'songs/{0}.{1}'.format(token, ext)
+
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=150)
     description = models.CharField(max_length=500, blank=True, null=True)
@@ -35,7 +42,7 @@ class Song(models.Model):
     visited = models.BooleanField(default=False)
     listened_on = models.DateTimeField(blank=True, null=True)
     # song will be uploaded to MEDIA_ROOT/songs
-    upload = models.FileField(upload_to='songs/')
+    upload = models.FileField(upload_to=get_random_song_path)
 
     def __str__(self):
         return self.name
