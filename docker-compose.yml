@@ -21,10 +21,6 @@ services:
     command: bash -c "python3 /code/app/manage.py makemigrations && python3 /code/app/manage.py migrate && python3 /code/app/manage.py collectstatic --noinput && cd /code/app/ && gunicorn song_snapchat.wsgi -b unix:/code/app/song_snapchat.sock --workers 3"
     volumes:
       - ./web:/code
-    expose:
-      - "8000"
-    ports:
-      - "8000:8000"
     depends_on:
       - db
     restart: always
