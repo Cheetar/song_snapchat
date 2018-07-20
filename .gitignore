@@ -4,3 +4,4 @@ web/app/media/songs/*
 web/app/static
 *.pyc
 .env
+web/app/song_snapchat.sock

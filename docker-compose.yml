@@ -18,7 +18,7 @@ services:
       ALLOWED_HOSTS: "*"
       DATABASES: "{'default': {'ENGINE': 'django.db.backends.postgresql_psycopg2', 'NAME': 'song_snapchat', 'USER': 'snapchat', 'PASSWORD': 'snapchat', 'HOST': 'db', 'PORT': '',}}"
       SITE_NAME_HUMAN: "Snapchat for songs"
-    command: bash -c "python3 /code/app/manage.py makemigrations && python3 /code/app/manage.py migrate && python3 /code/app/manage.py collectstatic --noinput && cd /code/app/ && gunicorn song_snapchat.wsgi -b 0.0.0.0:8000 --workers 3"
+    command: bash -c "python3 /code/app/manage.py makemigrations && python3 /code/app/manage.py migrate && python3 /code/app/manage.py collectstatic --noinput && cd /code/app/ && gunicorn song_snapchat.wsgi -b unix:/code/app/song_snapchat.sock --workers 3"
     volumes:
       - ./web:/code
     expose:
