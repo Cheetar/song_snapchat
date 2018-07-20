@@ -134,3 +134,6 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = config('MEDIA_ROOT')
 MEDIA_URL = '/media/'
+
+# In Python 3 octal numbers must start with 0o
+FIlE_UPLOAD_PERMISSIONS = 0o644
