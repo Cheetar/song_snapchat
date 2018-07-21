@@ -34,7 +34,7 @@ class Song(models.Model):
         return 'songs/{0}.{1}'.format(token, ext)
 
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=150)
+    name = models.CharField(max_length=150, blank=True)
     description = models.CharField(max_length=500, blank=True, null=True)
     token = models.CharField(max_length=32, blank=True)
     snap = models.ForeignKey('Snap', on_delete=models.CASCADE)
