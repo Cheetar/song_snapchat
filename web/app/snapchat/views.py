@@ -42,3 +42,12 @@ def song(request, song_token):
 
     context = {'song': song, 'snap_token': song.snap.token, 'was_song_visited': was_song_visited}
     return render(request, 'snapchat/song.html', context)
+
+
+# HTTP Error 404
+
+def page_not_found(request, exception):
+    """Return custom 404 page."""
+    response = render(request, '404.html')
+    response.status_code = 404
+    return response
