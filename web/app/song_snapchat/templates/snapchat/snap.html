@@ -8,7 +8,13 @@
       {% for row in songs_arranged %}
         <div name="row">
           {% for song in row %}
-            <a href="{% url 'song' song.token %}" class="btn song-tile {% if song.visited %} btn-secondary disabled {% else %} btn-primary {% endif %} js-scroll-trigger" value="{{song}}">{{song}}</a>
+            <a href="{% url 'song' song.token %}" class="btn song-tile {% if song.visited %} btn-secondary disabled {% else %} btn-primary {% endif %} js-scroll-trigger" value="{{song}}">
+              {% if song.name|length > 0 %}
+                {{song}}
+              {% else %}
+                &nbsp;
+              {% endif %}
+            </a>
           {% endfor %}
         </div>
       {% endfor %}
