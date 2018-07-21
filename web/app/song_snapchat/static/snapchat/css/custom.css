@@ -1,5 +1,14 @@
+body {
+  background-color: black;
+}
+
 .song-tile{
   margin:20px;
+}
+
+.song-tiles-container{
+  margin-top: 100px;
+  position: relative;
 }
 
 .gramophone-image{
