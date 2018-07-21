@@ -15,7 +15,7 @@ def snap(request, snap_token=None):
         snap_token = request.POST.get("token", "")
 
     snap = get_object_or_404(Snap, token=snap_token)
-    songs = Song.objects.filter(snap=snap)
+    songs = Song.objects.filter(snap=snap).order_by('token')
 
     n = len(songs)
     if n > 10:
