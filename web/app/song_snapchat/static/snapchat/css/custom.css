@@ -5,14 +5,17 @@
 .gramophone-image{
   border-radius: 10px;
   box-shadow: 10px;
-  max-width:400px;
-  max-height:300px;
+  max-width:500px;
+  max-height:387px;
   width: 100%;
+  height: 100%;
 }
 
 .gramophone-container{
   padding: 20px;
   width: 100%;
+  max-width:500px;
+  max-height:387px;
 }
 
 .test-song-button{
