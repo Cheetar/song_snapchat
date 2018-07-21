@@ -7,8 +7,8 @@ body {
 }
 
 .song-tiles-container{
-  margin-top: 100px;
   position: relative;
+  top: 100px;
 }
 
 .gramophone-image{
