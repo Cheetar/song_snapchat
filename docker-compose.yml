@@ -11,7 +11,7 @@ services:
   web:
     build: web/
     environment:
-      SECRET_KEY: "3558818dc29b7345bce995003f57dd"
+      SECRET_KEY: "13b6cbdb12216e8b2f74edddece45c9bd1ab1bfcc015e9f047e162c202859d68a7b0a2c1b0a8f5c1326cb853bbe0442927ae"
       DEBUG: "False"
       STATIC_ROOT: '/code/app/static/'
       MEDIA_ROOT: '/code/app/media/'

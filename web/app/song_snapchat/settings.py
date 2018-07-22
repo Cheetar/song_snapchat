@@ -137,3 +137,14 @@ MEDIA_URL = '/media/'
 
 # In Python 3 octal numbers must start with 0o
 FILE_UPLOAD_PERMISSIONS = 0o644
+
+# Security
+X_FRAME_OPTIONS = 'DENY'
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# Site servied via http for now
+# SECURE_HSTS_SECONDS = 31536000
+# SECURE_SSL_REDIRECT = True
