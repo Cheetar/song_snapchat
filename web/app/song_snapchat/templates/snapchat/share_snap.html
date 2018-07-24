@@ -1,0 +1,10 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <h2 class="text-white-50 mx-auto mt-2 mb-5">http://{{ request.META.HTTP_HOST }}{% url 'snap' snap.token %}</h2>
+
+  <a style="position: relative; fixed; bottom: 0px;" href="{% url 'index' %}" class="btn btn-secondary js-scroll-trigger">Back</a>
+
+{% endblock %}

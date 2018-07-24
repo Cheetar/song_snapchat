@@ -9,10 +9,10 @@ def generate_token():
 
 
 class Snap(models.Model):
-    id = models.AutoField(primary_key=True)
-    token = models.CharField(max_length=32, blank=True)
+    token = models.CharField(max_length=32, blank=True, unique=True, primary_key=True)
     name = models.CharField(max_length=100, blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
+    finished_editing = models.BooleanField(default=False)
 
     def __str__(self):
         if self.name is None:
@@ -33,10 +33,9 @@ class Song(models.Model):
         token = generate_token()
         return 'songs/{0}.{1}'.format(token, ext)
 
-    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=150, blank=True)
-    description = models.CharField(max_length=500, blank=True, null=True)
-    token = models.CharField(max_length=32, blank=True)
+    description = models.CharField(max_length=500, blank=True)
+    token = models.CharField(max_length=32, blank=True, unique=True, primary_key=True)
     snap = models.ForeignKey('Snap', on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
     visited = models.BooleanField(default=False)

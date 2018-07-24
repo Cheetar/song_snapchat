@@ -35,3 +35,9 @@ body {
 
 .test-sound-text{
 }
+
+.add-song-form label {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}

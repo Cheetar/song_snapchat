@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+      <div class='row'>
+        <div class='container'>
+          {% if songs %}
+            <h3 class="text-white-50 mx-auto mt-2 mb-3">Songs:</h3>
+            <ul>
+              {% for song in songs %}
+                  <li class="text-white-50">{{ song.name }}</li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <h2 class="text-white-50 mx-auto mt-2 mb-5">No songs</h2>
+          {% endif %}
+        </div>
+      </div>
+
+      <br/>
+
+      <div class='row'>
+            <div class='container'>
+                  <a href="{% url 'add_song' snap.token %}" class="btn btn-sm btn-primary js-scroll-trigger" style="padding:15px; margin-bottom:10px;">Add song</a>
+
+                  <form action="#" method="POST">
+                        {% csrf_token %}
+                        <input type='hidden' name='finished' />
+                        <input type="submit" class="btn btn-sm btn-primary js-scroll-trigger" style="padding:15px;" value="Finish editing">
+                  </form>
+            </div>
+      </div>
+{% endblock %}
