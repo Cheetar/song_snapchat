@@ -49,6 +49,15 @@ class Song(models.Model):
                                                   'audio/webm',
                                                   'audio/3gpp',
                                                   'audio/3gpp2',
+                                                  'audio/basic',
+                                                  'auido/L24',
+                                                  'audio/mid',
+                                                  'audio/mp4',
+                                                  'audio/x-aiff',
+                                                  'audio/x-mpegurl',
+                                                  'audio/vnd.rn-realaudio',
+                                                  'audio/vorbis',
+                                                  'audio/vnd.wav',
                                                   ))
 
     name = models.CharField(max_length=150, blank=True)
