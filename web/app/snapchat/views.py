@@ -19,17 +19,15 @@ def snap(request, snap_token=None):
     songs = Song.objects.filter(snap=snap).order_by('token')
 
     n = len(songs)
-    if n > 10:
-        no_columns = 3
-    elif n > 5:
-        no_columns = 2
-    else:
-        no_columns = 1
+    # 5 songs per column, at most 3 columns, if 0 songs then 1 column
+    nb_columns = min(max(((n - 1) // 5) + 1, 1), 3)
 
-    songs_arranged = [songs[i * no_columns:i * no_columns + no_columns] for i in range(math.ceil(n / no_columns))]
+    # Split songs into 2D table, songs_arranged[row][column]
+    songs_arranged = [songs[i * nb_columns:(i + 1) * nb_columns]
+                      for i in range(math.ceil(n / nb_columns))]
 
-    context = {'songs_arranged': songs_arranged, 'exceeding': n % no_columns}
-    return render(request, 'snapchat/snap.html', context)
+    return render(request, 'snapchat/snap.html',
+                  {'songs_arranged': songs_arranged})
 
 
 def song(request, song_token):
@@ -92,11 +90,10 @@ def share_snap(request, token=None):
     context = {'snap': snap}
     return render(request, 'snapchat/share_snap.html', context)
 
-# HTTP Error 404
-
 
 def page_not_found(request, exception):
-    """Return custom 404 page."""
+    """ Return custom 404 page.
+    """
     response = render(request, '404.html')
     response.status_code = 404
     return response
