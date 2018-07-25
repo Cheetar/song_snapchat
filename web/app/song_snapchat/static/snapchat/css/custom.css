@@ -41,3 +41,27 @@ body {
   text-align: center;
   vertical-align: middle;
 }
+
+/* Elements with this class will be displayed only on mobile */
+.mobile-show { display: none;}
+
+/* Smartphone Portrait and Landscape */
+@media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 480px){
+    .mobile-show {display: block;}
+}
+
+/* Elements with this classs will be hidden on mobile */
+.mobile-hide { display: block; }
+
+/* Smartphone Portrait and Landscape */
+@media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 480px){
+   .mobile-hide { display: none;}
+}
+
+.share-snap-link{
+  color: #c6c6c6;
+}
