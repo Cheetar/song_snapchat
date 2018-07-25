@@ -3,8 +3,10 @@
 
 {% block content %}
 
-  <h2 class="text-white-50 mx-auto mt-2 mb-5 mobile-hide">http://{{ request.META.HTTP_HOST }}{% url 'snap' snap.token %}</h2>
-  <h2 class="text-white-50 mx-auto mt-2 mb-5 mobile-show"><a class="share-snap-link" href="http://{{ request.META.HTTP_HOST }}{% url 'snap' snap.token %}">Share this link</a></h2>
+  <a class="share-snap-link" href="http://{{ request.META.HTTP_HOST }}{% url 'snap' snap.token %}">
+    <h2 class="text-white-50 mx-auto mt-2 mb-5 mobile-hide">http://{{ request.META.HTTP_HOST }}{% url 'snap' snap.token %}</h2>
+    <h2 class="text-white-50 mx-auto mt-2 mb-5 mobile-show">Share this link</h2>
+  </a>
   <a style="position: relative; fixed; bottom: 0px;" href="{% url 'index' %}" class="btn btn-secondary js-scroll-trigger">Back</a>
 
 {% endblock %}
