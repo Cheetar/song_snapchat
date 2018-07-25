@@ -8,6 +8,8 @@ services:
         POSTGRES_USER: "snapchat"
         POSTGRES_PASSWORD: "snapchat"
         POSTGRES_DB: "song_snapchat"
+    volumes:
+      - /var/lib/snapchat/postgresql/data:/var/lib/postgresql/data
   web:
     build: web/
     environment:
