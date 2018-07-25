@@ -31,6 +31,7 @@ body {
 
 .test-song-button{
   position: absolute; right: 50px; bottom: 50px;
+  padding-left: 25px;
 }
 
 .test-sound-text{
