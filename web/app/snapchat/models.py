@@ -3,6 +3,10 @@ import os
 
 from django.db import models
 
+from .validators import FileValidator
+
+MAX_SONG_SIZE_MB = 20
+
 
 def generate_token():
     return binascii.hexlify(os.urandom(16)).decode()
@@ -33,6 +37,20 @@ class Song(models.Model):
         token = generate_token()
         return 'songs/{0}.{1}'.format(token, ext)
 
+    song_validator = FileValidator(max_size=1024 * 1024 * MAX_SONG_SIZE_MB,
+                                   content_types=('application/mp3',
+                                                  'application/x-mp3',
+                                                  'audio/aac',
+                                                  'audio/mpeg',
+                                                  'audio/mp3',
+                                                  'audio/wav',
+                                                  'audio/x-wav',
+                                                  'audio/ogg',
+                                                  'audio/webm',
+                                                  'audio/3gpp',
+                                                  'audio/3gpp2',
+                                                  ))
+
     name = models.CharField(max_length=150, blank=True)
     description = models.CharField(max_length=500, blank=True)
     token = models.CharField(max_length=32, blank=True, unique=True, primary_key=True)
@@ -41,7 +59,8 @@ class Song(models.Model):
     visited = models.BooleanField(default=False)
     listened_on = models.DateTimeField(blank=True, null=True)
     # song will be uploaded to MEDIA_ROOT/songs
-    upload = models.FileField(upload_to=get_random_song_path)
+    upload = models.FileField(upload_to=get_random_song_path,
+                              validators=[song_validator])
 
     def __str__(self):
         return self.name
