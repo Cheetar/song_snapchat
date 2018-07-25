@@ -41,7 +41,9 @@ def song(request, song_token):
         song.listened_on = datetime.now()
         song.save()
 
-    context = {'song': song, 'snap_token': song.snap.token, 'was_song_visited': was_song_visited}
+    context = {'song': song,
+               'snap_token': song.snap.token,
+               'was_song_visited': was_song_visited}
     return render(request, 'snapchat/song.html', context)
 
 
@@ -81,7 +83,8 @@ def add_song(request, token=None):
     else:
         form = SongAddForm()
 
-    return render(request, 'snapchat/add_song.html', {'form': form, 'snap': snap})
+    return render(request, 'snapchat/add_song.html', {'form': form,
+                                                      'snap': snap})
 
 
 def share_snap(request, token=None):
