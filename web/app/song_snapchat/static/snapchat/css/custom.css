@@ -42,6 +42,11 @@ body {
   vertical-align: middle;
 }
 
+.add-song-form textarea {
+  width: 100%;
+  max-width: 500px;
+}
+
 /* Elements with this class will be displayed only on mobile */
 .mobile-show { display: none;}
 
