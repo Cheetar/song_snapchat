@@ -71,3 +71,47 @@ body {
 .share-snap-link{
   color: #c6c6c6;
 }
+
+#ac-wrapper {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: url("images/pop-bg.png") repeat top left transparent;
+background-color: rgba(30, 30, 30, 0.8);
+z-index: 1001;
+}
+#popup {
+background: none repeat scroll 0 0 #FFFFFF;
+border-radius: 18px;
+-moz-border-radius: 18px;
+-webkit-border-radius: 18px;
+height: auto;
+margin: 5% auto;
+margin-top: 100px;
+position: relative;
+width: 597px;
+max-width: 90%;
+border-style: solid;
+border-width: 2px;
+border-color: #4f837f;
+padding: 15px;
+}
+
+#popup li {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.close-pop-up {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.button-pop-up {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
