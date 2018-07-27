@@ -6,13 +6,6 @@ body {
   margin:20px;
 }
 
-@media only screen and (min-device-width: 480px) {
-  .song-tiles-container{
-    position: relative;
-    top: 100px;
-  }
-}
-
 .gramophone-image{
   border-radius: 10px;
   box-shadow: 10px;
