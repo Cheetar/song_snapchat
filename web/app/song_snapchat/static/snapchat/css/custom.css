@@ -41,11 +41,13 @@ body {
   display: table-cell;
   text-align: center;
   vertical-align: middle;
+  font-weight: bold;
 }
 
 .add-song-form textarea {
   width: 100%;
   max-width: 500px;
+  max-height: 150px;
 }
 
 /* Elements with this class will be displayed only on mobile */
@@ -114,4 +116,13 @@ padding: 15px;
 .button-pop-up {
   margin-top: 20px;
   margin-bottom: 15px;
+}
+
+.content {
+  max-width: 90%;
+}
+
+.errorlist li {
+  color: rgba(255, 255, 255, 50);
+  font-weight: bold;
 }
