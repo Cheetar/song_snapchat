@@ -4,7 +4,8 @@ from datetime import datetime
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import SongAddForm
-from .models import Snap, Song, generate_token
+from .models import Snap, Song
+from .utils import generate_token
 
 
 def index(request):
