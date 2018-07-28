@@ -119,3 +119,44 @@ padding: 15px;
   color: rgba(255, 255, 255, 50);
   font-weight: bold;
 }
+
+#loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("images/pop-bg.png") repeat top left transparent;
+  background-color: rgba(30, 30, 30, 0.5);
+  z-index: 1001;
+}
+
+#loader {
+  background: none;
+  border-radius: 18px;
+  -moz-border-radius: 18px;
+  -webkit-border-radius: 18px;
+  width: 120px;
+  height: 120px;
+
+  position: absolute;;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.loader-circle {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
