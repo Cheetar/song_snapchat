@@ -47,12 +47,12 @@ def song(request, song_token):
     return render(request, 'snapchat/song.html', context)
 
 
-def add_snap(request, token=None):
-    if token:
-        snap = get_object_or_404(Snap, token=token)
+def add_snap(request, snap_token=None):
+    if snap_token:
+        snap = get_object_or_404(Snap, token=snap_token)
     else:
-        token = generate_token()
-        snap = Snap(token=token)
+        snap_token = generate_token()
+        snap = Snap(token=snap_token)
         snap.save()
 
     if not snap.finished_editing:
@@ -61,15 +61,15 @@ def add_snap(request, token=None):
             snap.save()
 
     if snap.finished_editing:
-        return redirect('share_snap', token=snap.token)
+        return redirect('share_snap', snap_token=snap.token)
 
     songs = Song.objects.filter(snap=snap)
     context = {'snap': snap, 'songs': songs}
     return render(request, 'snapchat/add_snap.html', context)
 
 
-def add_song(request, token=None):
-    snap = get_object_or_404(Snap, token=token)
+def add_song(request, snap_token=None):
+    snap = get_object_or_404(Snap, token=snap_token)
 
     if request.method == 'POST':
         form = SongAddForm(request.POST, request.FILES)
@@ -78,7 +78,7 @@ def add_song(request, token=None):
             song.snap = snap
 
             song.save()
-            return redirect('add_snap', token=snap.token)
+            return redirect('add_snap', snap_token=snap.token)
 
     else:
         form = SongAddForm()
@@ -87,8 +87,8 @@ def add_song(request, token=None):
                                                       'snap': snap})
 
 
-def share_snap(request, token=None):
-    snap = get_object_or_404(Snap, token=token)
+def share_snap(request, snap_token=None):
+    snap = get_object_or_404(Snap, token=snap_token)
     context = {'snap': snap}
     return render(request, 'snapchat/share_snap.html', context)
 
