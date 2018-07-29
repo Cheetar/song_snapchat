@@ -82,9 +82,8 @@ class Song(models.Model):
             path = download_mp3(self.youtube_url)
             filename = path.split('/')[-1]
 
-            song = open(path, encoding='utf-8')
-            x = File(song)
-            self.upload.save(filename, x)
+            song = open(path, 'rb')
+            self.upload.save(filename, File(song))
             song.close()
 
         return super(Song, self).save(*args, **kwargs)

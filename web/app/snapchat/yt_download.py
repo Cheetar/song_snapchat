@@ -18,11 +18,10 @@ def download_mp3(url):
     """
 
     token = generate_token()
-    filename = token + '.mp3'
-    path = settings.MEDIA_ROOT + 'songs/' + filename
+    path = settings.MEDIA_ROOT + 'songs/'
     ydl_opts = {
         'format': 'bestaudio/best',
-        'outtmpl': path,
+        'outtmpl': path + token + ".%(ext)s",
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
@@ -32,7 +31,7 @@ def download_mp3(url):
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         try:
             ydl.download([url])
-            return path
+            return path + token + ".mp3"
         except DownloadError:
             return None
 
