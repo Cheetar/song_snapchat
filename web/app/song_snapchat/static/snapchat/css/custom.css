@@ -43,6 +43,10 @@ body {
   max-height: 150px;
 }
 
+.add-song-form input {
+  max-width: 100%;
+}
+
 /* Elements with this class will be displayed only on mobile */
 .mobile-show { display: none;}
 
