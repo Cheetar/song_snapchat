@@ -21,8 +21,16 @@ def unlistenSnap(modeladmin, request, queryset):
         unlisten(songs)
 
 
+def deleteSnapIfEmpty(modeladmin, request, queryset):
+    for snap in queryset:
+        songs = Song.objects.filter(snap=snap)
+        if not songs:
+            snap.delete()
+
+
 unlistenSong.short_description = "Unlisten selected songs"
 unlistenSnap.short_description = "Unlisten all songs from seleceted snaps"
+deleteSnapIfEmpty.short_description = "Delete snap if empty"
 
 
 class SongAdmin(admin.ModelAdmin):
@@ -36,7 +44,7 @@ class SongAdmin(admin.ModelAdmin):
 class SnapAdmin(admin.ModelAdmin):
     list_display = ('name', 'created_on', 'token')
     ordering = ('-created_on',)
-    actions = [unlistenSnap]
+    actions = [unlistenSnap, deleteSnapIfEmpty]
 
 
 admin.site.register(Snap, SnapAdmin)
