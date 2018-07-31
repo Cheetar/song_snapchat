@@ -1,3 +1,5 @@
+import os
+
 from django.core.files import File
 from django.db import models
 from django.db.models.signals import post_delete
@@ -87,6 +89,10 @@ class Song(models.Model):
             song = open(path, 'rb')
             self.upload.save(filename, File(song))
             song.close()
+
+            # Django will save song as another file, so the downloaded file
+            # can be deleted
+            os.remove(path)
 
         return super(Song, self).save(*args, **kwargs)
 
