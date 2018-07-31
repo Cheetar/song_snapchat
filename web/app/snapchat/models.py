@@ -1,5 +1,7 @@
 from django.core.files import File
 from django.db import models
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
 
 from .utils import generate_token
 from .validators import FileValidator
@@ -87,3 +89,8 @@ class Song(models.Model):
             song.close()
 
         return super(Song, self).save(*args, **kwargs)
+
+
+@receiver(post_delete, sender=Song)
+def submission_delete(sender, instance, **kwargs):
+    instance.upload.delete(False)
