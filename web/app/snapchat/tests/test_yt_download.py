@@ -2,7 +2,7 @@ import os.path
 
 from django.test import TestCase
 
-from .yt_download import download_mp3, is_url_valid
+from snapchat.yt_download import download_mp3, is_url_valid
 
 
 class YtDownloadTestCase(TestCase):
