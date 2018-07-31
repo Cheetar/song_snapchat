@@ -10,7 +10,7 @@ class SongAddForm(forms.ModelForm):
     description = forms.CharField(required=False, widget=forms.Textarea)
     upload = forms.FileField(required=False)
     youtube_url = forms.CharField(required=False, widget=forms.TextInput(
-        attrs={'size': '40', 'placeholder': 'http://www.youtube.com/watch?v='}))
+        attrs={'size': '30', 'placeholder': 'http://www.youtube.com/watch?v='}))
 
     class Meta:
         model = Song
