@@ -26,6 +26,10 @@
     <!-- Font awesome CDN -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
+    {% if GOOGLE_ANALYTICS_TRACKING_CODE %}
+      {% include 'main/google_analytics.html' %}
+    {% endif %}
+
   </head>
 
   <body id="page-top">
