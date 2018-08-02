@@ -33,6 +33,7 @@ song_validator = FileValidator(max_size=1024 * 1024 * MAX_SONG_SIZE_MB,
                                               'audio/vnd.rn-realaudio',
                                               'audio/vorbis',
                                               'audio/vnd.wav',
+                                              'application/octet-stream',
                                               ))
 
 
