@@ -2,10 +2,17 @@
 {% load static %}
 
 {% block content %}
+      <div class="row">
+            <div class="container">
+                  <h3 class="text-white-50 mx-auto" >Add snap</h3>
+                  <hr class=" mb-3" />
+            </div>
+      </div>
+
       <div class='row'>
         <div class='container'>
           {% if songs %}
-            <h3 class="text-white-50 mx-auto mt-2 mb-3">Songs:</h3>
+            <h2 class="text-white-50 mx-auto mt-2 mb-3">Songs:</h2>
             <ul>
               {% for song in songs %}
                   <li class="text-white-50">{{ song.name }}</li>

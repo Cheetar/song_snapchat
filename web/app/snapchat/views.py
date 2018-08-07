@@ -15,7 +15,9 @@ def index(request):
 def snap(request, snap_token=None):
     if snap_token is None:
         snap_token = request.POST.get("token", "")
-        return redirect('snap', snap_token=snap_token)
+        if snap_token:
+            return redirect('snap', snap_token=snap_token)
+        return redirect('add_snap')
 
     snap = get_object_or_404(Snap, token=snap_token)
     songs = Song.objects.filter(snap=snap).order_by('token')
