@@ -2,6 +2,7 @@ import math
 from datetime import datetime
 
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import NoReverseMatch
 
 from .forms import SongAddForm
 from .models import Snap, Song
@@ -16,7 +17,12 @@ def snap(request, snap_token=None):
     if snap_token is None:
         snap_token = request.POST.get("token", "")
         if snap_token:
-            return redirect('snap', snap_token=snap_token)
+            try:
+                return redirect('snap', snap_token=snap_token)
+            # If no valid token found then just redirect to add snap
+            except NoReverseMatch:
+                pass
+
         return redirect('add_snap')
 
     snap = get_object_or_404(Snap, token=snap_token)
