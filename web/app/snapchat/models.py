@@ -71,7 +71,7 @@ class Song(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     visited = models.BooleanField(default=False)
     listened_on = models.DateTimeField(blank=True, null=True)
-    # song will be uploaded to MEDIA_ROOT/songs
+    # song will be uploaded to MEDIA_ROOT/songs.
     upload = models.FileField(upload_to=get_random_song_path,
                               validators=[song_validator])
     youtube_url = models.CharField(max_length=150, blank=True, default='')
@@ -92,7 +92,7 @@ class Song(models.Model):
             song.close()
 
             # Django will save song as another file, so the downloaded file
-            # can be deleted
+            # can be deleted.
             os.remove(path)
 
         return super(Song, self).save(*args, **kwargs)

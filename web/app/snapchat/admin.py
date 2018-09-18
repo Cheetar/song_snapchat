@@ -5,7 +5,7 @@ from .models import Snap, Song
 
 def unlisten(songs):
     """ Makes all songs from queryset songs unvisited and sets their
-        listened_on field to None
+        listened_on field to None.
     """
     songs.update(visited=False)
     songs.update(listened_on=None)

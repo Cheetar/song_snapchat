@@ -6,7 +6,7 @@ register_converter(converters.TokenConverter, 'token')
 
 urlpatterns = [
     path('', views.index, name='index'),
-    # Token is 32 chars long hexaecimal string
+    # Token is 32 chars long hexadecimal string.
     path('snap/<token:snap_token>/', views.snap, name='snap'),
     path('snap/', views.snap, name='snap'),
     path('snap/add/<token:snap_token>/', views.add_snap, name='add_snap'),

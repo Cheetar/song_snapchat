@@ -19,7 +19,7 @@ def snap(request, snap_token=None):
         if snap_token:
             try:
                 return redirect('snap', snap_token=snap_token)
-            # If no valid token found then just redirect to add snap
+            # If no valid token found then just redirect to add snap.
             except NoReverseMatch:
                 pass
 
@@ -29,10 +29,10 @@ def snap(request, snap_token=None):
     songs = Song.objects.filter(snap=snap).order_by('token')
 
     n = len(songs)
-    # 5 songs per column, at most 3 columns, if 0 songs then 1 column
+    # 5 songs per column, at most 3 columns, if 0 songs then 1 column.
     nb_columns = min(max(((n - 1) // 5) + 1, 1), 3)
 
-    # Split songs into 2D table, songs_arranged[row][column]
+    # Split songs into 2D table, songs_arranged[row][column].
     songs_arranged = [songs[i * nb_columns:(i + 1) * nb_columns]
                       for i in range(math.ceil(n / nb_columns))]
 
