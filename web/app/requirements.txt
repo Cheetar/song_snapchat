@@ -5,4 +5,4 @@ pytz==2018.5
 raven==6.9.0
 psycopg2
 python-magic==0.4.15
-youtube-dl==2018.7.21
+youtube-dl==2018.10.05
