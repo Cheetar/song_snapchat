@@ -22,4 +22,4 @@ Share music in a magical way
 - To run tests: `python web/app/manage.py test`
 
 ### Live
-The app runs live here: https://snapchatforsongs.com
+The app runs live here: https://songler.sieniawski.net
